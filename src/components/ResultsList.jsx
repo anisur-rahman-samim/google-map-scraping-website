@@ -5,11 +5,11 @@ function ResultsList({ results }) {
   const [expandedId, setExpandedId] = useState(null);
   const [filterType, setFilterType] = useState('all');
 
-  // Filter results based on type
   const filteredResults = results.filter((result) => {
     if (filterType === 'all') return true;
     if (filterType === 'with-phone') return result.phone !== null;
     if (filterType === 'with-website') return result.website !== null;
+    if (filterType === 'with-email') return result.email !== null;
     return true;
   });
 
@@ -17,6 +17,7 @@ function ResultsList({ results }) {
     total: results.length,
     withPhone: results.filter((r) => r.phone).length,
     withWebsite: results.filter((r) => r.website).length,
+    withEmail: results.filter((r) => r.email).length,
   };
 
   const toggleExpanded = (id) => {
